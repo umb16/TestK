@@ -3,42 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class SimplePool<T> where T : class, IPoolObject
+namespace MK.Pooling
 {
-    private ObjectPool<T> _pool;
-    private IPoolObject _template;
-
-    public SimplePool(T template)
+    public class SimplePool<T> where T : class, IPoolObject
     {
-        _pool = new ObjectPool<T>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject);
-        _template = template;
-    }
+        private ObjectPool<T> _pool;
+        private IPoolObject _template;
 
-    public T Get()
-    {
-       return _pool.Get();
-    }
+        public SimplePool(T template)
+        {
+            _pool = new ObjectPool<T>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPoolObject);
+            _template = template;
+        }
 
-    T CreatePooledItem()
-    {
-        var obj = (T)_template.CreateNew();
-        obj.Reset();
-        return obj;
-    }
+        public T GetItem()
+        {
+            return _pool.Get();
+        }
 
-    void OnReturnedToPool(T obj)
-    {
-        obj.SetActive(false);
-        obj.Reset();
-    }
+        public void ReleaseItem(T item)
+        {
+            _pool.Release(item);
+        }
 
-    void OnTakeFromPool(T obj)
-    {
-        obj.SetActive(true);
-    }
+        T CreatePooledItem()
+        {
+            var obj = (T)_template.CreateNew();
+            obj.DestroyAction = () => _pool.Release(obj);
+            obj.Reset();
+            return obj;
+        }
 
-    void OnDestroyPoolObject(T obj)
-    {
-        obj.Destroy();
+        void OnReturnedToPool(T obj)
+        {
+            obj.SetActive(false);
+            obj.Reset();
+        }
+
+        void OnTakeFromPool(T obj)
+        {
+            obj.SetActive(true);
+        }
+
+        void OnDestroyPoolObject(T obj)
+        {
+            obj.OnOverflowDestroy();
+        }
     }
 }

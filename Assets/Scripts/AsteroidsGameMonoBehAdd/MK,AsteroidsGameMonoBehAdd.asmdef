@@ -1,0 +1,17 @@
+{
+    "name": "AsteroidsGameMonoBehAdd",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2d558e17dd558774196f93546f6daf78",
+        "GUID:d8c938fe868321b49bb8175a190cadba"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

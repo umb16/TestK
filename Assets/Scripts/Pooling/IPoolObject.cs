@@ -1,7 +1,13 @@
-﻿public interface IPoolObject
+﻿using System;
+
+namespace MK.Pooling
 {
-    IPoolObject CreateNew();
-    void SetActive(bool v);
-    void Reset();
-    void Destroy();
+    public interface IPoolObject
+    {
+        Action DestroyAction { get; set; }
+        IPoolObject CreateNew();
+        void SetActive(bool v);
+        void Reset();
+        void OnOverflowDestroy();
+    }
 }
