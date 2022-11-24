@@ -28,8 +28,10 @@ namespace MK.AsteroidsGame
         public Vector2 GetRandomSafePointAroundUnit(IUnit unit, float radius)
         {
             var point = new Vector2((float)(_random.NextDouble() - .5) * _size.X, (float)(_random.NextDouble() - .5) * _size.Y);
-            if ((unit.Position - point).Length() < unit.Radius * 2 + radius * 2)
-                return point + GetRandomDir() * (unit.Radius * 2 + radius * 2);
+            if ((unit.Position - point).Length() < (unit.Radius + radius) * 10)
+            {
+                return unit.Position + GetRandomDir() * (unit.Radius + radius) * 5;
+            }
             return point;
         }
         public Vector2 GetRandomDir()

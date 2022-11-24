@@ -10,6 +10,7 @@ namespace MK.AsteroidsGame
         private GameObject _gameObject;
 
         private System.Numerics.Vector2 _position;
+        private float _angle;
         public System.Numerics.Vector2 Velocity { get; set; }
         public System.Numerics.Vector2 Position
         {
@@ -21,8 +22,16 @@ namespace MK.AsteroidsGame
             }
         }
 
-        public float Radius { get;}
-        public float Angle { get; set; }
+        public float Radius { get; }
+        public float Angle
+        {
+            get => _angle;
+            set
+            {
+                _angle = value;
+                _gameObject.transform.eulerAngles = new Vector3(0, 0, _angle * Mathf.Rad2Deg);
+            }
+        }
         public Action DestroyAction { get; set; }
         public bool MustBeDestroyed { get; set; }
 
@@ -48,6 +57,7 @@ namespace MK.AsteroidsGame
             Angle = 0;
             Position = System.Numerics.Vector2.Zero;
             Velocity = System.Numerics.Vector2.Zero;
+            MustBeDestroyed = false;
         }
 
         public void SetActive(bool v)

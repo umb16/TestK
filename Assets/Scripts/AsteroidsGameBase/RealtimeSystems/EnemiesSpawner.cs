@@ -2,17 +2,21 @@
 
 namespace MK.AsteroidsGame
 {
-    public class Spawner : IRealtime
+    public class EnemiesSpawner : IRealtime
     {
         private Units _units;
         private Utils _utils;
         private Settings _settings;
+        private RealtimeGameData _gameData;
+        private int MaxAsteroids => _gameData.Score / 100 + 3;
+        private int MaxSaucers => _gameData.Score / 200 + 2;
 
-        public Spawner(Settings settings, Units units, Utils utils)
+        public EnemiesSpawner(Settings settings, Units units, Utils utils, RealtimeGameData gameData)
         {
             _units = units;
             _utils = utils;
             _settings = settings;
+            _gameData = gameData;
         }
 
         public void Update(float deltaTime)
@@ -23,12 +27,12 @@ namespace MK.AsteroidsGame
 
         private void TrySpawnAsteroid()
         {
-            if (_units.GetCount(UnitType.Asteroid) < 3)
+            if (_units.GetCount(UnitType.Asteroid) < MaxAsteroids)
                 CreateAsteroid();
         }
         private void TrySpawnSaucer()
         {
-            if (_units.GetCount(UnitType.Saucer) < 2)
+            if (_units.GetCount(UnitType.Saucer) < MaxSaucers)
                 CreateSaucer();
         }
 

@@ -12,6 +12,7 @@ namespace MK.AsteroidsGame
         public int AsteroidScore { get; }
         public int SaucerScore { get; }
         public int AsteroidPartScore { get; }
+        public float MaxPlayerSpeed { get; }
 
         public Settings(Vector2 screenSize,
             float speedFactor = 1,
@@ -20,7 +21,8 @@ namespace MK.AsteroidsGame
             float saucerSpeed = .3f,
             int asteroidScore = 10,
             int saucerScore = 20,
-            int asteroidPartScore = 11)
+            int asteroidPartScore = 11,
+            float maxPlayerSpeed = 10)
         {
             SpeedFactor = speedFactor;
             ScreenSize = screenSize;
@@ -30,6 +32,7 @@ namespace MK.AsteroidsGame
             AsteroidScore = asteroidScore;
             SaucerScore = saucerScore;
             AsteroidPartScore = asteroidPartScore;
+            MaxPlayerSpeed = maxPlayerSpeed;
         }
     }
 }

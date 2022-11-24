@@ -27,7 +27,7 @@ public class GameMonoBeh : MonoBehaviour
         ControlStates controlStates = new ControlStates(inputActions);
         inputActions.Enable();
 
-        var size = new System.Numerics.Vector2(_camera.orthographicSize * 2, _camera.orthographicSize * 2 / _camera.aspect);
+        var size = new System.Numerics.Vector2(_camera.orthographicSize * 2 * _camera.aspect, _camera.orthographicSize * 2);
         Settings settings = new(size);
 
         _game = new Game(unitsCreator, controlStates, _ui, settings);

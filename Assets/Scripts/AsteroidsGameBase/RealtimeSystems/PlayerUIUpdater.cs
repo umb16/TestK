@@ -1,12 +1,14 @@
-﻿namespace MK.AsteroidsGame
+﻿using System;
+
+namespace MK.AsteroidsGame
 {
-    public class UIUpdater : IRealtime
+    public class PlayerUIUpdater : IRealtime
     {
         private IUI _ui;
         private Units _units;
         private RealtimeGameData _gameData;
 
-        public UIUpdater(Units units, IUI ui, RealtimeGameData gameData)
+        public PlayerUIUpdater(Units units, IUI ui, RealtimeGameData gameData)
         {
             _ui = ui;
             _units = units;
