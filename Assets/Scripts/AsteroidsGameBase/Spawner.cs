@@ -39,13 +39,6 @@ namespace MK.AsteroidsGame
             asteroid.Velocity = _utils.GetRandomDir() * _settings.AsteroidSpeed;
         }
 
-        public void CreateAsteroidPart(Vector2 position)
-        {
-            var part = _units.CreateUnit(UnitType.AsteroidPart);
-            part.Position = position;
-            part.Velocity = _utils.GetRandomDir() * _settings.AsteroidPartSpeed;
-        }
-
         private void CreateSaucer()
         {
             var saucer = _units.CreateUnit(UnitType.Saucer);

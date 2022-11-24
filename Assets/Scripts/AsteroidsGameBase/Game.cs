@@ -1,3 +1,6 @@
+using System.Collections.ObjectModel;
+using UnityEngine.Diagnostics;
+using UnityEngine.Rendering.VirtualTexturing;
 using static UnityEngine.UI.CanvasScaler;
 
 
@@ -7,27 +10,32 @@ namespace MK.AsteroidsGame
     {
         private IUnitsCreator _unitsCreator;
         private IControlStates _controlStates;
-        private IUIEvents _ui;
+        private RealtimeGameData _gameData = new RealtimeGameData();
+        private IUI _ui;
         private Settings _settings;
         private Utils _utils;
-        private Spawner _spawner;
-        private SaucerAI _saucerAI;
-        private MoveUnits _moveUnits;
         private int _score = 0;
         private bool _gameIsOver = false;
-
         private Units _units;
 
-        public Game(IUnitsCreator unitsCreator, IControlStates controlStates, IUIEvents ui, Settings settings)
+        private IRealtime[] _realTimeSystems;
+
+        public Game(IUnitsCreator unitsCreator, IControlStates controlStates, IUI ui, Settings settings)
         {
             _units = new Units(unitsCreator);
             _controlStates = controlStates;
             _ui = ui;
             _settings = settings;
             _utils = new Utils(settings, _units);
-            _spawner = new Spawner(settings, _units, _utils);
-            _saucerAI = new SaucerAI(settings, _units);
-            _moveUnits = new MoveUnits(settings, _units);
+            _realTimeSystems = new IRealtime[]
+            {
+                new Spawner(settings, _units, _utils),
+                new SaucerAI(settings, _units),
+                new MoveUnits(settings, _units),
+                new BulletsCollisions(_units, _utils),
+                new ScoreCalculator(_units, _gameData, ui),
+                new AsteroidsAfterDeathEffect(settings, _units, _utils)
+            };
             Start();
         }
 
@@ -42,9 +50,10 @@ namespace MK.AsteroidsGame
                 return;
             }
             _gameIsOver = CheckGameOver();
-            _spawner.Update(deltaTime);
-            _saucerAI.Update(deltaTime);
-            _moveUnits.Update(deltaTime);
+            foreach (var sys in _realTimeSystems)
+            {
+                sys.Update(deltaTime);
+            }
             _units.RemoveDestroyedUnits();
         }
 
@@ -63,7 +72,7 @@ namespace MK.AsteroidsGame
 
         private bool CheckGameOver()
         {
-            foreach (var unit in _units.DangerousUnits)
+            foreach (var unit in _units.EnemyUnits)
             {
                 if (_utils.CheckCollision(_units.Player, unit))
                 {

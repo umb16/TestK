@@ -11,7 +11,7 @@ namespace MK.AsteroidsGame
 
         private Dictionary<UnitType, List<IUnit>> _units = new Dictionary<UnitType, List<IUnit>>();
         public IEnumerable<IUnit> AllUnits { get; private set; }
-        public IEnumerable<IUnit> DangerousUnits { get; private set; }
+        public IEnumerable<IUnit> EnemyUnits { get; private set; }
 
         public IUnit Player => _units[UnitType.PlayerShip].FirstOrDefault();
 
@@ -26,7 +26,7 @@ namespace MK.AsteroidsGame
 
             AllUnits = _units.Values.Aggregate<IEnumerable<IUnit>>((accum, x) => accum.Union(x));
 
-            DangerousUnits = _units[UnitType.Asteroid]
+            EnemyUnits = _units[UnitType.Asteroid]
                 .Union(_units[UnitType.AsteroidPart])
                 .Union(_units[UnitType.Saucer]);
         }
@@ -73,11 +73,5 @@ namespace MK.AsteroidsGame
                 }
             }
         }
-
-        /*private void DestroyUnit(UnitType unitType, IUnit unit)
-        {
-            _units[unitType].Remove(unit);
-            unit.Destroy();
-        }*/
     }
 }

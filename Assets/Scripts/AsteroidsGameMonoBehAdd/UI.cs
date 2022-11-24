@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MK.AsteroidsGame
 {
-    public class UIEvents : IUIEvents
+    public class UI : IUI
     {
         public void HideGameOver()
         {

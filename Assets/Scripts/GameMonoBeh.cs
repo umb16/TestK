@@ -29,7 +29,7 @@ public class GameMonoBeh : MonoBehaviour
         var size = new System.Numerics.Vector2(_camera.orthographicSize * 2, _camera.orthographicSize * 2 / _camera.aspect);
         Settings settings = new(size);
 
-        _game = new Game(unitsCreator, controlStates, new UIEvents(), settings);
+        _game = new Game(unitsCreator, controlStates, new UI(), settings);
     }
 
     void Update()

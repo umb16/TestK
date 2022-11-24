@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace MK.AsteroidsGame
 {
-    public interface IUIEvents
+    public interface IUI
     {
         void ShowGameOver(int score);
         void HideGameOver();
