@@ -2,7 +2,7 @@ using System;
 
 namespace MK.AsteroidsGame
 {
-    public class IControlStates
+    public interface IControlStates
     {
         bool Accelerate { get; }
         float Rotate { get; }

@@ -21,13 +21,14 @@ namespace MK.AsteroidsGame
             }
         }
 
-        public float Radius { get; set; }
+        public float Radius { get;}
         public float Angle { get; set; }
         public Action DestroyAction { get; set; }
 
-        public Unit(GameObject gameObject)
+        public Unit(GameObject gameObject, float radius)
         {
             _gameObject = gameObject;
+            Radius = radius;
         }
 
         public void OnOverflowDestroy()
@@ -37,7 +38,7 @@ namespace MK.AsteroidsGame
 
         public IPoolObject CreateNew()
         {
-            var obj = new Unit(GameObject.Instantiate(_gameObject));
+            var obj = new Unit(GameObject.Instantiate(_gameObject), Radius);
             return obj;
         }
 
@@ -46,7 +47,6 @@ namespace MK.AsteroidsGame
             Angle = 0;
             Position = System.Numerics.Vector2.Zero;
             Velocity = System.Numerics.Vector2.Zero;
-            Radius = 1;
         }
 
         public void SetActive(bool v)

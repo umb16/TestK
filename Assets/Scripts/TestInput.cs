@@ -13,10 +13,10 @@ public class TestInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SimplePool<Unit> pool = new SimplePool<Unit>(new Unit(asteroid));
+        //SimplePool<Unit> pool = new SimplePool<Unit>(new Unit(asteroid));
 
-        IUnit x = pool.GetItem();
-        x.Destroy();
+       // IUnit x = pool.GetItem();
+        //x.Destroy();
         //pool.ReleaseItem(x);
         inputActions = new PlayerInputActions();
         //inputActions.Enable();

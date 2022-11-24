@@ -10,11 +10,11 @@ namespace MK.AsteroidsGame
         private Dictionary<UnitType, SimplePool<Unit>> _pools = new Dictionary<UnitType, SimplePool<Unit>>();
         public UnitsCreator( GameObject playerShip, GameObject asteroid, GameObject asteroidPart, GameObject saucer, GameObject bullet)
         {
-            _pools.Add(UnitType.PlayerShip, new SimplePool<Unit>(new Unit(playerShip)));
-            _pools.Add(UnitType.Asteroid, new SimplePool<Unit>(new Unit(asteroid)));
-            _pools.Add(UnitType.AsteroidPart, new SimplePool<Unit>(new Unit(asteroidPart)));
-            _pools.Add(UnitType.Saucer, new SimplePool<Unit>(new Unit(saucer)));
-            _pools.Add(UnitType.Bullet, new SimplePool<Unit>(new Unit(bullet)));
+            _pools.Add(UnitType.PlayerShip, new SimplePool<Unit>(new Unit(playerShip,.20f)));
+            _pools.Add(UnitType.Asteroid, new SimplePool<Unit>(new Unit(asteroid,.5f)));
+            _pools.Add(UnitType.AsteroidPart, new SimplePool<Unit>(new Unit(asteroidPart,.25f)));
+            _pools.Add(UnitType.Saucer, new SimplePool<Unit>(new Unit(saucer,.5f)));
+            _pools.Add(UnitType.Bullet, new SimplePool<Unit>(new Unit(bullet,.01f)));
         }
         public IUnit Create(UnitType type)
         {

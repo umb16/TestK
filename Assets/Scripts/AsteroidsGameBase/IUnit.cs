@@ -9,7 +9,7 @@ namespace MK.AsteroidsGame
         Vector2 Position { get; set; }
         Vector2 Velocity { get; set; }
         float Angle { get; set; }
-        float Radius { get; set; }
+        float Radius { get; }
         void Destroy();
     }
 }
