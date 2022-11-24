@@ -13,7 +13,6 @@ public class GameMonoBeh : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     private Game _game;
 
-    // Start is called before the first frame update
     void Start()
     {
         UnitsCreator unitsCreator = new UnitsCreator(
@@ -26,11 +25,13 @@ public class GameMonoBeh : MonoBehaviour
         var inputActions = new PlayerInputActions();
         ControlStates controlStates = new ControlStates(inputActions);
         inputActions.Enable();
+
         var size = new System.Numerics.Vector2(_camera.orthographicSize * 2, _camera.orthographicSize * 2 / _camera.aspect);
-        _game = new Game(unitsCreator, controlStates, new UIEvents(), size, 10);
+        Settings settings = new(size);
+
+        _game = new Game(unitsCreator, controlStates, new UIEvents(), settings);
     }
 
-    // Update is called once per frame
     void Update()
     {
         _game.Update(Time.deltaTime);

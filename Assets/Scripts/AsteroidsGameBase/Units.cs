@@ -57,10 +57,27 @@ namespace MK.AsteroidsGame
             return newUnit;
         }
 
-        public void DestroyUnit(UnitType unitType, IUnit unit)
+        public void RemoveDestroyedUnits()
+        {
+            foreach (var pair in _units)
+            {
+                for (int i = 0; i < pair.Value.Count;)
+                {
+                    if (pair.Value[i].MustBeDestroyed)
+                    {
+                        pair.Value[i].Destroy();
+                        pair.Value.RemoveAt(i);
+                        continue;
+                    }
+                    i++;
+                }
+            }
+        }
+
+        /*private void DestroyUnit(UnitType unitType, IUnit unit)
         {
             _units[unitType].Remove(unit);
             unit.Destroy();
-        }
+        }*/
     }
 }

@@ -45,6 +45,7 @@ namespace MK.AsteroidsGame
             _spawner.Update(deltaTime);
             _saucerAI.Update(deltaTime);
             _moveUnits.Update(deltaTime);
+            _units.RemoveDestroyedUnits();
         }
 
         private void Restart()

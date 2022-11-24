@@ -11,7 +11,7 @@ namespace MK.AsteroidsGame
 
         public Utils(Settings settings, Units units)
         {
-            _size = settings.screenSize;
+            _size = settings.ScreenSize;
             _units = units;
         }
         public bool CheckCollision(IUnit unit1, IUnit unit2)

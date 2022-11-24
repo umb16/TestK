@@ -24,6 +24,7 @@ namespace MK.AsteroidsGame
         public float Radius { get;}
         public float Angle { get; set; }
         public Action DestroyAction { get; set; }
+        public bool MustBeDestroyed { get; set; }
 
         public Unit(GameObject gameObject, float radius)
         {
