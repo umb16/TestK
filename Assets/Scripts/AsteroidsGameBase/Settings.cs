@@ -9,18 +9,27 @@ namespace MK.AsteroidsGame
         public float AsteroidSpeed { get; }
         public float AsteroidPartSpeed { get; }
         public float SaucerSpeed { get; }
+        public int AsteroidScore { get; }
+        public int SaucerScore { get; }
+        public int AsteroidPartScore { get; }
 
         public Settings(Vector2 screenSize,
             float speedFactor = 1,
             float asteroidSpeed = .3f,
             float asteroidPartSpeed = .5f,
-            float saucerSpeed = .3f)
+            float saucerSpeed = .3f,
+            int asteroidScore = 10,
+            int saucerScore = 20,
+            int asteroidPartScore = 11)
         {
             SpeedFactor = speedFactor;
             ScreenSize = screenSize;
             AsteroidSpeed = asteroidSpeed;
             AsteroidPartSpeed = asteroidPartSpeed;
             SaucerSpeed = saucerSpeed;
+            AsteroidScore = asteroidScore;
+            SaucerScore = saucerScore;
+            AsteroidPartScore = asteroidPartScore;
         }
     }
 }

@@ -11,6 +11,7 @@ public class GameMonoBeh : MonoBehaviour
     [SerializeField] private GameObject asteroidPartPrefab;
     [SerializeField] private GameObject saucerPrefab;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private UIAsteroids _ui;
     private Game _game;
 
     void Start()
@@ -29,7 +30,7 @@ public class GameMonoBeh : MonoBehaviour
         var size = new System.Numerics.Vector2(_camera.orthographicSize * 2, _camera.orthographicSize * 2 / _camera.aspect);
         Settings settings = new(size);
 
-        _game = new Game(unitsCreator, controlStates, new UI(), settings);
+        _game = new Game(unitsCreator, controlStates, _ui, settings);
     }
 
     void Update()

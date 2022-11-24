@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TextValuePair : MonoBehaviour
+public class UIValueText : MonoBehaviour
 {
     [SerializeField] private TMP_Text _valueText;
     [SerializeField] private int _roundDigits = 2;

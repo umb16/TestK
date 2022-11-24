@@ -24,9 +24,12 @@ namespace MK.AsteroidsGame
             {
                 foreach (var enemy in _enemies)
                 {
-                    _utils.CheckCollision(bullet, enemy);
-                    bullet.MustBeDestroyed = true;
-                    enemy.MustBeDestroyed = true;
+                    if (_utils.CheckCollision(bullet, enemy))
+                    {
+                        bullet.MustBeDestroyed = true;
+                        enemy.MustBeDestroyed = true;
+                        break;
+                    }
                 }
             }
         }

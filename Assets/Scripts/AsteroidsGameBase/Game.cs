@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using UnityEngine.Diagnostics;
+using UnityEngine.Playables;
 using UnityEngine.Rendering.VirtualTexturing;
 using static UnityEngine.UI.CanvasScaler;
 
@@ -15,7 +16,6 @@ namespace MK.AsteroidsGame
         private Settings _settings;
         private Utils _utils;
         private int _score = 0;
-        private bool _gameIsOver = false;
         private Units _units;
 
         private IRealtime[] _realTimeSystems;
@@ -31,17 +31,20 @@ namespace MK.AsteroidsGame
             {
                 new Spawner(settings, _units, _utils),
                 new SaucerAI(settings, _units),
-                new MoveUnits(settings, _units),
                 new BulletsCollisions(_units, _utils),
-                new ScoreCalculator(_units, _gameData, ui),
-                new AsteroidsAfterDeathEffect(settings, _units, _utils)
+                new PlayerCollisions(_units, _utils),
+                new MoveUnits(settings, _units),
+                new ScoreCalculator(settings, _units, _gameData),
+                new AsteroidsAfterDeathEffect(settings, _units, _utils),
+                new GameOverChecker(_units, _gameData, ui),
+                new UIUpdater(_units, ui, _gameData)
             };
             Start();
         }
 
         public void Update(float deltaTime)
         {
-            if (_gameIsOver)
+            if (_gameData.GameIsOver)
             {
                 if (_controlStates.FireBullet)
                 {
@@ -49,7 +52,6 @@ namespace MK.AsteroidsGame
                 }
                 return;
             }
-            _gameIsOver = CheckGameOver();
             foreach (var sys in _realTimeSystems)
             {
                 sys.Update(deltaTime);
@@ -66,22 +68,9 @@ namespace MK.AsteroidsGame
 
         private void Start()
         {
-            _gameIsOver = false;
+            _ui.HideGameOver();
+            _gameData.GameIsOver = false;
             _units.CreateUnit(UnitType.PlayerShip);
-        }
-
-        private bool CheckGameOver()
-        {
-            foreach (var unit in _units.EnemyUnits)
-            {
-                if (_utils.CheckCollision(_units.Player, unit))
-                {
-                    _gameIsOver = true;
-                    _units.Player.Destroy();
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }
