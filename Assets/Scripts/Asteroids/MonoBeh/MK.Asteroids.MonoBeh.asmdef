@@ -1,0 +1,19 @@
+{
+    "name": "MK.Asteroids.MonoBeh",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2d558e17dd558774196f93546f6daf78",
+        "GUID:d8c938fe868321b49bb8175a190cadba",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:ec7447f9fc69b5c4ebe1342e7fdc5cc0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
