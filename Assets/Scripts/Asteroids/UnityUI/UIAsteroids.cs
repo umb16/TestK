@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MK.Asteroids
+namespace MK.Asteroids.UnityUI
 {
     public class UIAsteroids : MonoBehaviour, IUI
     {
