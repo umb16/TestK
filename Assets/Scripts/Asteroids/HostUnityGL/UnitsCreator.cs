@@ -5,15 +5,13 @@ namespace MK.Asteroids.HostUnityGL
 {
     public class UnitsCreator : IUnitsCreator
     {
-        private const float PLAYER_RADIUS = .20f;
-        private const float ASTEROID_RADIUS = .5f;
-        private const float ASTEROID_PART_RADIUS = .25f;
-        private const float SAUCER_RADIUS = .5f;
-        private const float BULLET_RADIUS = .025f;
+        private Settings _settings;
+
         public ReadOnlyCollection<Unit> Units { get; }
         private List<Unit> _units = new();
-        public UnitsCreator()
+        public UnitsCreator(Settings settings)
         {
+            _settings = settings;
             Units = new ReadOnlyCollection<Unit>(_units);
         }
         public IUnit Create(UnitType type)
@@ -22,19 +20,19 @@ namespace MK.Asteroids.HostUnityGL
             switch (type)
             {
                 case UnitType.Asteroid:
-                    radius = ASTEROID_RADIUS;
+                    radius = _settings.AsteroidSize;
                     break;
                 case UnitType.AsteroidPart:
-                    radius = ASTEROID_PART_RADIUS;
+                    radius = _settings.AsteroidPartSize;
                     break;
                 case UnitType.Bullet:
-                    radius = BULLET_RADIUS;
+                    radius = _settings.BulletSize;
                     break;
                 case UnitType.Saucer:
-                    radius = SAUCER_RADIUS;
+                    radius = _settings.SaucerSize;
                     break;
                 case UnitType.PlayerShip:
-                    radius = PLAYER_RADIUS;
+                    radius = _settings.PlayerSize;
                     break;
                 default:
                     return null;

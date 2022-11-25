@@ -15,6 +15,11 @@ namespace MK.Asteroids
         public float BulletSpeed { get; }
         public int MaxRayAmmunition { get; }
         public float RayCooldownFactor { get; }
+        public float AsteroidSize { get; }
+        public float AsteroidPartSize { get; }
+        public float SaucerSize { get; }
+        public float PlayerSize { get; }
+        public float BulletSize { get; }
 
         public Settings(Vector2 screenSize,
             float speedFactor = 1,
@@ -26,7 +31,12 @@ namespace MK.Asteroids
             int asteroidPartScore = 11,
             float bulletSpeed = 10,
             int maxRayAmmunition = 3,
-            float rayCooldownSpeed = .1f)
+            float rayCooldownSpeed = .1f,
+            float asteroidSize = 1,
+            float asteroidPartSize =.5f,
+            float saucerSize = 1,
+            float playerSize =.5f,
+            float bulletSize = .1f)
         {
             SpeedFactor = speedFactor;
             ScreenSize = screenSize;
@@ -36,9 +46,14 @@ namespace MK.Asteroids
             AsteroidScore = asteroidScore;
             SaucerScore = saucerScore;
             AsteroidPartScore = asteroidPartScore;
-            this.BulletSpeed = bulletSpeed;
+            BulletSpeed = bulletSpeed;
             MaxRayAmmunition = maxRayAmmunition;
             RayCooldownFactor = rayCooldownSpeed;
+            AsteroidSize = asteroidSize;
+            AsteroidPartSize = asteroidPartSize;
+            SaucerSize = saucerSize;
+            PlayerSize = playerSize;
+            BulletSize = bulletSize;
         }
     }
 }
