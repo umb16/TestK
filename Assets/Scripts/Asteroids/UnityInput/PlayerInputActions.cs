@@ -62,6 +62,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""2449205b-209b-4e4b-ba04-d3cec9d4d4a9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -130,6 +139,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""FireRay"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc47d163-692f-4220-9b6e-f91c04bf461d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -142,6 +162,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
         m_Player_FireBullet = m_Player.FindAction("FireBullet", throwIfNotFound: true);
         m_Player_FireRay = m_Player.FindAction("FireRay", throwIfNotFound: true);
+        m_Player_Restart = m_Player.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +226,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Rotate;
     private readonly InputAction m_Player_FireBullet;
     private readonly InputAction m_Player_FireRay;
+    private readonly InputAction m_Player_Restart;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -213,6 +235,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
         public InputAction @FireBullet => m_Wrapper.m_Player_FireBullet;
         public InputAction @FireRay => m_Wrapper.m_Player_FireRay;
+        public InputAction @Restart => m_Wrapper.m_Player_Restart;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -234,6 +257,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @FireRay.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireRay;
                 @FireRay.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireRay;
                 @FireRay.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireRay;
+                @Restart.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -250,6 +276,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @FireRay.started += instance.OnFireRay;
                 @FireRay.performed += instance.OnFireRay;
                 @FireRay.canceled += instance.OnFireRay;
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
             }
         }
     }
@@ -260,5 +289,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnRotate(InputAction.CallbackContext context);
         void OnFireBullet(InputAction.CallbackContext context);
         void OnFireRay(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
 }

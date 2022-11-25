@@ -33,10 +33,10 @@ namespace MK.Asteroids
         }
         private void CreateBullet()
         {
-            var part = _units.CreateUnit(UnitType.Bullet);
+            var bullet = _units.CreateUnit(UnitType.Bullet);
             var dir = new Vector2(MathF.Sin(_units.Player.Angle), MathF.Cos(_units.Player.Angle));
-            part.Position = _units.Player.Position + dir * _units.Player.Radius;
-            part.Velocity = dir * _settings.BulletSpeed;
+            bullet.Position = _units.Player.Position + dir * _units.Player.Radius;
+            bullet.Velocity = dir * _settings.BulletSpeed;
         }
 
     }

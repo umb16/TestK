@@ -8,5 +8,6 @@ namespace MK.Asteroids
         float Rotate { get; }
         bool FireBullet { get; }
         bool FireRay { get; }
+        bool Restart { get; }
     }
 }

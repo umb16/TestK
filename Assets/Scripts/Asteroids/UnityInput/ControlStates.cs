@@ -20,5 +20,7 @@ namespace MK.Asteroids.UnityInput
         public bool FireBullet => _playerInputActions.Player.FireBullet.IsPressed();
 
         public bool FireRay => _playerInputActions.Player.FireRay.triggered;
+
+        public bool Restart => _playerInputActions.Player.Restart.triggered;
     }
 }

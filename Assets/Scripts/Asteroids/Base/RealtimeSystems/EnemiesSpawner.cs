@@ -8,8 +8,8 @@ namespace MK.Asteroids
         private Utils _utils;
         private Settings _settings;
         private RealtimeGameData _gameData;
-        private int MaxAsteroids => _gameData.Score / 100 + 3;
-        private int MaxSaucers => _gameData.Score / 200 + 2;
+        private int MaxAsteroids => _gameData.Score / 150 + 3;
+        private int MaxSaucers => _gameData.Score / 300 + 2;
 
         public EnemiesSpawner(Settings settings, Units units, Utils utils, RealtimeGameData gameData)
         {

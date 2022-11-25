@@ -1,5 +1,7 @@
 namespace MK.Asteroids
-{    public class Game
+{
+
+    public class Game
     {
         private IUnitsCreator _unitsCreator;
         private IControlStates _controlStates;
@@ -28,11 +30,12 @@ namespace MK.Asteroids
                 new PlayerCollisions(_units, _utils),
                 new MoveUnits(settings, _units),
                 new PlayerBulletFire(settings, _units, controlStates),
+                new PlayerRayFire(settings, _units, controlStates, _gameData),
                 new PlayerMovement(settings, _units, controlStates),
                 new ScoreCalculator(settings, _units, _gameData),
                 new AsteroidsAfterDeathEffect(settings, _units, _utils),
                 new GameOverChecker(_units, _gameData, ui),
-                new PlayerUIUpdater(_units, ui, _gameData)
+                new PlayerUIUpdater(_units, ui, _gameData, settings)
             };
         }
 
@@ -40,7 +43,7 @@ namespace MK.Asteroids
         {
             if (_gameData.GameIsOver)
             {
-                if (_controlStates.FireBullet)
+                if (_controlStates.Restart)
                 {
                     Restart();
                 }

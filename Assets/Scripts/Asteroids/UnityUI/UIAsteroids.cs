@@ -24,7 +24,7 @@ namespace MK.Asteroids.UnityUI
             _shipY.SetValue(coords.Y);
         }
 
-        public void SetRayAmmunitionCount(float value) => _rayAmmunition.SetValue(value);
+        public void SetRayAmmunitionCount(int value) => _rayAmmunition.SetValue(value);
         public void SetRayCooldown(float value) => _rayCooldown.SetValue(value);
         public void ShowGameOver(int score) => _gameOver.Show(score);
         public void HideGameOver() => _gameOver.Hide();

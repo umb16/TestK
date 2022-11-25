@@ -56,7 +56,10 @@ namespace MK.Asteroids
             _units[unitType].Add(newUnit);
             return newUnit;
         }
-
+        public IUnit CreateRawUnit(UnitType unitType)
+        {
+            return _unitsCreator.Create(unitType);
+        }
         public void RemoveDestroyedUnits()
         {
             foreach (var pair in _units)

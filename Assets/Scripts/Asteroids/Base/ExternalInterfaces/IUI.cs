@@ -10,7 +10,7 @@ namespace MK.Asteroids
         void SetCoords(Vector2 coords);
         void SetAngle(float value);
         void SetSpeed(float value);
-        void SetRayAmmunitionCount(float value);
+        void SetRayAmmunitionCount(int value);
         void SetRayCooldown(float value);
         void ShowGameOver(int score);
         void HideGameOver();

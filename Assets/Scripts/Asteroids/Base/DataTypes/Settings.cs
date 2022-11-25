@@ -14,7 +14,7 @@ namespace MK.Asteroids
         public int AsteroidPartScore { get; }
         public float BulletSpeed { get; }
         public int MaxRayAmmunition { get; }
-        public float RayCooldownSpeed { get; }
+        public float RayCooldownFactor { get; }
 
         public Settings(Vector2 screenSize,
             float speedFactor = 1,
@@ -38,7 +38,7 @@ namespace MK.Asteroids
             AsteroidPartScore = asteroidPartScore;
             this.BulletSpeed = bulletSpeed;
             MaxRayAmmunition = maxRayAmmunition;
-            RayCooldownSpeed = rayCooldownSpeed;
+            RayCooldownFactor = rayCooldownSpeed;
         }
     }
 }
