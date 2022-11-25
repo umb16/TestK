@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MK.Asteroids.MonoBeh
+namespace MK.Asteroids.HostMonoBeh
 {
     public class UnitsCreator : IUnitsCreator
     {

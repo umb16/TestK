@@ -1,0 +1,19 @@
+{
+    "name": "MK.Asteroids.UnityGL",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2d558e17dd558774196f93546f6daf78",
+        "GUID:ec7447f9fc69b5c4ebe1342e7fdc5cc0",
+        "GUID:363d14f6f9caf5d4e8f5531bb288c6c8",
+        "GUID:d8c938fe868321b49bb8175a190cadba"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

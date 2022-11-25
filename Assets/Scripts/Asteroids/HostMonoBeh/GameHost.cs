@@ -2,9 +2,9 @@ using MK.Asteroids.UnityInput;
 using MK.Asteroids.UnityUI;
 using UnityEngine;
 
-namespace MK.Asteroids.MonoBeh
+namespace MK.Asteroids.HostMonoBeh
 {
-    public class GameMonoBeh : MonoBehaviour
+    public class GameHost : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
         [SerializeField] private GameObject shipPrefab;

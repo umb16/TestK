@@ -3,7 +3,7 @@ using MK.Pooling;
 using System;
 using UnityEngine;
 
-namespace MK.Asteroids.MonoBeh
+namespace MK.Asteroids.HostMonoBeh
 {
     public class Unit : IUnit, IPoolObject
     {

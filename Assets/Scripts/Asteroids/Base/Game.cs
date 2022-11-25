@@ -1,6 +1,27 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace MK.Asteroids
 {
+    public class RotateAsteroids : IRealtime
+    {
+        private IEnumerable<IUnit> _asteroids;
 
+        public RotateAsteroids(Units units)
+        {
+            _asteroids = units.GetCollection(UnitType.Asteroid).Union(units.GetCollection(UnitType.AsteroidPart));
+        }
+        public void Update(float deltaTime)
+        {
+            foreach (var asteroid in _asteroids)
+            {
+                if (asteroid.Velocity.X + asteroid.Velocity.Y < 0)
+                    asteroid.Angle += asteroid.Velocity.Length() * deltaTime;
+                else
+                    asteroid.Angle -= asteroid.Velocity.Length() * deltaTime;
+            }
+        }
+    }
     public class Game
     {
         private IUnitsCreator _unitsCreator;
@@ -29,6 +50,7 @@ namespace MK.Asteroids
                 new BulletsCollisions(_units, _utils),
                 new PlayerCollisions(_units, _utils),
                 new MoveUnits(settings, _units),
+                new RotateAsteroids(_units),
                 new PlayerBulletFire(settings, _units, controlStates),
                 new PlayerRayFire(settings, _units, controlStates, _gameData),
                 new PlayerMovement(settings, _units, controlStates),
